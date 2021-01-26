@@ -30,8 +30,11 @@ function setup() {
 
 	engine = Engine.create();
 	world = engine.world;
-
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.8, isStatic:true});
+	box1=new Box(width/2,650,200,20)
+	box2=new Box(width/2-100,570,20,160)
+	box3=new Box(width/2+100,570,20,160)
+  
+	packageBody = Bodies.circle(width/2 , 200 , 5 , { isStatic:true});
 	World.add(world, packageBody);
 	
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
@@ -39,7 +42,7 @@ function setup() {
 
 
 	Engine.run(engine);
-  
+
 }
 
 
@@ -48,6 +51,11 @@ function draw() {
   background(0);
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
+
+  box1.display()
+  box2.display()
+  box3.display()
+  
   drawSprites();
  
 }
@@ -59,5 +67,9 @@ Matter.Body.setStatic(packageBody,false)
     
   }
 }
+
+
+
+
 
 
